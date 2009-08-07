@@ -1,0 +1,4 @@
+* Hpricot Extensions
+** Hpricot::Styles class 
+** Hpricot::Elem change_tag, styles
+** Hpricot::Elem::Trav set_style
