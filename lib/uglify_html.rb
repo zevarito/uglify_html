@@ -8,8 +8,10 @@ class UglifyHtml
   def make_ugly
     (@doc/"*").each do |e|
       case e.name
-      when 'b', 'strong' then process(e, "font-weight", "bold")
-      when 'i', 'em'     then process(e, "font-style",  "italic")
+      when 'b', 'strong' then process_with_style(e, "font-weight",      "bold")
+      when 'i', 'em'     then process_with_style(e, "font-style",       "italic")
+      when 'u', 'ins'    then process_with_style(e, "text-decoration",  "underline")
+      when 'del'         then process_with_style(e, "text-decoration",  "line-through")
       end 
 
     end
@@ -19,7 +21,7 @@ class UglifyHtml
 
   private
 
-  def process(e, style, value)
+  def process_with_style(e, style, value)
     if e.parent and e.parent.name == "span" and e.parent.children.size == 1
       e.parent.set_style(style, value)
       e.swap e.inner_html

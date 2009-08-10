@@ -17,5 +17,17 @@ class UglifyHtmlTest < Test::Unit::TestCase
       uglify = "<p>some <span style=\"font-style:italic;font-weight:bold\">em bold</span> text inside a paragraph</p>"
       assert_renders_uglify uglify, html 
     end
+    
+    test "it should convert a <ins> tag" do
+      html = "<p>some <ins>underline</ins> text inside a paragraph</p>"
+      uglify = "<p>some <span style=\"text-decoration:underline\">underline</span> text inside a paragraph</p>"
+      assert_renders_uglify uglify, html 
+    end
+    
+    test "it should convert a <del> tag" do
+      html = "<p>some <del>deleted</del> text inside a paragraph</p>"
+      uglify = "<p>some <span style=\"text-decoration:line-through\">deleted</span> text inside a paragraph</p>"
+      assert_renders_uglify uglify, html 
+    end
   end
 end
