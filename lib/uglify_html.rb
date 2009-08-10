@@ -12,9 +12,11 @@ class UglifyHtml
       when 'i', 'em'     then process_with_style(e, "font-style",       "italic")
       when 'u', 'ins'    then process_with_style(e, "text-decoration",  "underline")
       when 'del'         then process_with_style(e, "text-decoration",  "line-through")
+      when 'ul', 'ol'    then process_list(e)
       end 
-
     end
+
+    (@doc/"li ul | li ol").remove
 
     @doc.to_html
   end
@@ -29,5 +31,10 @@ class UglifyHtml
       e.change_tag! "span"
       e.set_style(style, value)
     end
+  end
+
+  def process_list(e)
+    return if not e.parent or not e.parent.name == "li"
+    e.parent.after(e.to_html)
   end
 end

@@ -30,4 +30,18 @@ class UglifyHtmlTest < Test::Unit::TestCase
       assert_renders_uglify uglify, html 
     end
   end
+
+  context "convert lists" do
+    test "it should convert a simple ul nested list" do
+      html = "<ul><li>item 1</li><li>item 2<ul><li>nested 1 item 1</li></ul></li></ul>"
+      uglify = "<ul><li>item 1</li><li>item 2</li><ul><li>nested 1 item 1</li></ul></ul>"
+      assert_renders_uglify uglify, html 
+    end
+    
+    test "it should convert a simple ol nested list" do
+      html = "<ol><li>item 1</li><li>item 2<ol><li>nested 1 item 1</li></ol></li></ol>"
+      uglify = "<ol><li>item 1</li><li>item 2</li><ol><li>nested 1 item 1</li></ol></ol>"
+      assert_renders_uglify uglify, html 
+    end
+  end
 end
