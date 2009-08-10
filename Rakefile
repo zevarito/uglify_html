@@ -20,8 +20,7 @@ end
 
 begin
   require "mg"
-  MG.new("uglifyhtml.gemspec")
-rescue LoadError
+  MG.new("uglify_html.gemspec")
 end
 
 desc "Default: run tests"

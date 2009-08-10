@@ -1,3 +1,7 @@
+version 0.10
+
+* Process UL and OL lists
+* Process Underlines, Line through, Bold and Italics
 * Hpricot Extensions
 ** Hpricot::Styles class 
 ** Hpricot::Elem change_tag, styles
