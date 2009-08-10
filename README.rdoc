@@ -4,29 +4,41 @@ Ugly small lib to convert HTML markup to ugly HTML markup.
 
 Things such these happen...
 
-<strong>some bold text</strong> -> <span style="font-weight: bold"></span>
+  <strong>some bold text</strong>
 
-<em>some bold text</em> -> <span style="font-style: italic"></span>
+to
 
-<ul>
-  <li>Item 1</li>
-  <li>Item 2
-    <ul>
-      <li>Item 1 List 2</li>
-    </ul>
-  </li>
-</ul>
+  <span style="font-weight: bold"></span>
 
-        |
-        V
-<ul>
-  <li>Item 1</li>
-  <li>Item 2
-    <ul>
-      <li>Item 1 List 2</li>
-    </ul>
-  </li>
-</ul>
+-
+
+  <em>some bold text</em>
+
+to
+
+  <span style="font-style: italic"></span>
+
+-
+
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2
+      <ul>
+        <li>Item 1 List 2</li>
+      </ul>
+    </li>
+  </ul>
+
+to
+
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2
+      <ul>
+        <li>Item 1 List 2</li>
+      </ul>
+    </li>
+  </ul>
 
 
 == Why?
@@ -36,8 +48,7 @@ Things such these happen...
 == With
 
 * Hpricot
-* Hpricot Extensions
-* * Elem::Trav::add_style, Elem::Trav::has_style?, Elem::change_tag!
+* Hpricot extensions Elem::Trav::add_style, Elem::Trav::has_style?, Elem::change_tag!
 
 == Get it
 
