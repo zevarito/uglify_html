@@ -1,4 +1,4 @@
-require 'hpricot_ext'
+require File.expand_path(File.dirname(__FILE__) + "/hpricot_ext.rb")
 
 class UglifyHtml
   def initialize(html)
