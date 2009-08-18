@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name    = "uglify_html"
-  s.version = "0.11"
+  s.version = "0.12"
   s.date    = "2009-08-10"
 
   s.description = "Make ugly a Html document"
