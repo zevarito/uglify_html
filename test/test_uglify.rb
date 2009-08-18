@@ -1,8 +1,19 @@
 require File.expand_path(File.dirname(__FILE__) + "/test_helper")
 
 class UglifyHtmlTest < Test::Unit::TestCase
-  def assert_renders_uglify(uglify, html)
-    assert_equal uglify, UglifyHtml.new(html).make_ugly
+  def assert_renders_uglify(uglify, html, options ={})
+    assert_equal uglify, UglifyHtml.new(html, options).make_ugly
+  end
+
+  context "let pass through certain elements" do
+    test "pass strong tags, pass em tags" do
+      html = "<p>some <strong>bold</strong> text inside a paragraph</p>"
+      uglify = "<p>some <strong>bold</strong> text inside a paragraph</p>"
+      assert_renders_uglify uglify, html, {:pass_through => ['strong']} 
+      html = "<p>some <em>bold</em> text inside a paragraph</p>"
+      uglify = "<p>some <em>bold</em> text inside a paragraph</p>"
+      assert_renders_uglify uglify, html, {:pass_through => ['em']} 
+    end
   end
 
   context "convert common tags" do

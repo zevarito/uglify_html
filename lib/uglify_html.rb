@@ -1,12 +1,16 @@
 require File.expand_path(File.dirname(__FILE__) + "/hpricot_ext.rb")
 
 class UglifyHtml
-  def initialize(html)
+  def initialize(html, options = {})
     @doc = Hpricot html
+    options[:pass_through] ||= []
+    @options = options
   end
 
   def make_ugly
     (@doc/"*").each do |e|
+      next if @options[:pass_through].include? e.name
+
       case e.name
       when 'b', 'strong' then process_with_style(e, "font-weight",      "bold")
       when 'i', 'em'     then process_with_style(e, "font-style",       "italic")
